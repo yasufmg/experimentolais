@@ -112,7 +112,7 @@ newHtml("form", `<div class='fancy'><input name='consent' id='consent' type='che
         else getButton("go_to_info").disable()._runPromises();
     }) ).call()
     ,
-    newButton("go_to_info", "Experiment starten")
+    newButton("go_to_info", "Iniciar experimento")
         .cssContainer({"margin":"1em"})
         .disable()
         .print()
