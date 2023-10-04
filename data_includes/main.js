@@ -135,105 +135,92 @@ newTrial("participants",
         .cssContainer({"margin-top":"1em", "margin-bottom":"1em"})
         .print()
     ,
-    newText("participant_info_header", "<div class='fancy'><h2>Zur Auswertung der Ergebnisse benötigen wir folgende Informationen.</h2><p>Sie werden streng anonym behandelt und eine spätere Zuordnung zu Ihnen wird nicht möglich sein.</p></div>")
+    newText("participant_info_header", "<div class='fancy'><h2>Questionário sociodemográfico</h2><p>Por favor, complete esse questionário com algumas informações sobre você.</p></div>")
     ,
-    // Participant ID (6-place)
-    newText("participantID", "<b>Bitte tragen Sie Ihre Teilnehmer-ID ein.</b><br>(bitte Eintrag durch Eingabetaste bestätigen)")
+    // Participant ID
+    newText("participantID", "<b>Informe seu nome completo ou suas iniciais.</b>")
     ,
     newTextInput("input_ID")
-        .length(6)
         .log()
         .print()
-        .wait()
     ,
-    // German native speaker question
-    newText("<b>Ist Deutsch Ihre Muttersprache?</b>")
+    // Genero
+    newText("<b>Selecione o seu gênero</b>")
     ,
-    newScale("input_german",   "ja", "nein")
+    newScale("input_genero",   "Feminino", "Masculino", "Outro", "Prefiro não responder")
         .radio()
         .log()
         .labelsPosition("right")
         .print()
-        .wait()
     ,
-    // Federal state of origin
-    newText("<b>In welchem Bundesland wird Ihre Variante des Deutschen (bzw. Ihr Dialekt) hauptsächlich gesprochen?</b>")
+    // Nativo
+        newText("<b>O português brasileiro é sua língua materna (ou seja, a primeira língua que você aprendeu)?</b>")
     ,
-    newDropDown("land", "(bitte auswählen)")
-        .add("Baden-Württemberg", "Bayern", "Berlin", "Brandenburg", "Bremen", "Hamburg", "Hessen", "Mecklenburg-Vorpommern", "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfal", "Saarland", "Sachsen", "Sachsen-Anhalt", "Schleswig-Holstein", "Thüringen", "nicht Deutschland, sondern Österreich", "nicht Deutschland, sondern Schweiz", "keines davon")
+    newScale("input_nativo",   "Sim", "Não")
+        .radio()
         .log()
+        .labelsPosition("right")
         .print()
-        .wait()
     ,
-    // Other native languages
-    newText("<b>Haben Sie andere Muttersprachen?</b><br>(bitte Eintrag durch Eingabetaste bestätigen)")
+    // Idade
+    newText("<b>Qual a sua idade?</b><br>(responda usando números)")
     ,
-    newTextInput("input_native")
-        .log()
-        .print()
-        .wait()
-    ,
-    // Age
-    newText("<b>Alter in Jahren</b><br>(bitte Eintrag durch Eingabetaste bestätigen)")
-    ,
-    newTextInput("input_age")
+    newTextInput("input_idade")
         .length(2)
         .log()
         .print()
-        .wait()
     ,
-    // Gender
-    newText("<b>Geschlecht</b>")
+    // Escolaridade
+    newText("<b>Qual sua escolaridade?</b>")
     ,
-    newScale("input_gender",   "weiblich", "männlich", "divers")
+    newScale("input_escolaridade",   "Primeiro Grau completo ou cursando", "Segundo grau completo ou cursando", "Curso universitário completo ou cursando")
         .radio()
         .log()
         .labelsPosition("right")
         .print()
-        .wait()
     ,
-    // Handedness
-    newText("<b>Händigkeit</b>")
+        // Certificado
+    newText("<b>Se quiser receber certificado de participação, deixe seu e-mail aqui:</b>")
     ,
-    newScale("input_hand",   "rechts", "links", "beide")
-        .radio()
+    newTextInput("input_certificado")
         .log()
-        .labelsPosition("right")
         .print()
-        .wait()
     ,
-    // Clear error messages if the participant changes the input
+    newText("<b>Obs.: O certificado de participação apenas será enviado caso você tenha deixado seu nome completo.</b>")
+    .color("red")
+    ,
+    // Não aparecer erro caso o participante mude as informações
     newKey("just for callback", "") 
         .callback( getText("errorage").remove() , getText("errorID").remove() )
     ,
     // Formatting text for error messages
     defaultText.color("Crimson").print()
     ,
-    // Continue. Only validate a click when ID and age information is input properly
-    newButton("weiter", "Weiter zur Instruktion")
+    // Continuar e só validar se tiver todas as infos
+    newButton("continuar", "Continuar para instruções")
         .cssContainer({"margin-top":"1em", "margin-bottom":"1em"})
         .print()
-        // Check for participant ID and age input
+        // Erros caso o participante não coloque as informações
         .wait(
              newFunction('dummy', ()=>true).test.is(true)
             // ID
             .and( getTextInput("input_ID").testNot.text("")
-                .failure( newText('errorID', "Bitte tragen Sie Ihre Teilnehmer-ID ein. Diese haben Sie in einer E-Mail bekommen.") )
+                .failure( newText('errorID', "Por gentileza, coloque seu nome ou iniciais.") )
             // Age
-            ).and( getTextInput("input_age").test.text(/^\d+$/)
-                .failure( newText('errorage', "Bitte tragen Sie Ihr Alter ein."), 
-                          getTextInput("input_age").text("")))  
+            ).and( getTextInput("input_idade").test.text(/^\d+$/)
+                .failure( newText('errorage', "Por gentileza, coloque sua idade."), 
+                          getTextInput("input_idade").text("")))  
         )
     ,
-    // Store the texts from inputs into the Var elements
+    // Cria novas variáveis que recebem o conteúdo nas caixas de textos respectivas
     getVar("ID")     .set( getTextInput("input_ID") ),
-    getVar("GERMAN") .set( getScale("input_german") ),
-    getVar("LAND")   .set( getDropDown("land") ),
-    getVar("NATIVE") .set( getTextInput("input_native") ),
-    getVar("AGE")    .set( getTextInput("input_age") ),
-    getVar("GENDER") .set( getScale("input_gender") ),
-    getVar("HAND")   .set( getScale("input_hand") )
-);
+    getVar("GENERO") .set( getScale("input_genero") ),
+    getVar("NATIVO")   .set( getScale("input_nativo") ),
+    getVar("IDADE") .set( getTextInput("input_idade") ),
+    getVar("ESCOLARIDADE")    .set( getScale("input_escolaridade") ),
+    getVar("CERTIFICADO") .set( getTextInput("input_certificado") )
+)
+
 
 // Instructions
 newTrial("instructions",
