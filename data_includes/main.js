@@ -11,7 +11,7 @@ const askQuestion = (successCallback, failureCallback, waitTime) => (row) => (ro
 
   newCanvas("Canvas", 600, 100)
     .center()
-    .add(   0 ,  0,  newText("Qual alternativa melhor define o que você entendeu?"))
+    .add(   0 ,  0,  newText("Wer oder was wurde im Satz erwähnt?"))
     .add(   0 , 50 , newText("1 =") )
     .add( 300 , 50 , newText("2 =") )
     .add(  40 , 50 , getText("answer_correct") )
@@ -250,6 +250,11 @@ newTrial("instructions",
 // Exercise
 Template("exercise.csv", row =>
   newTrial("exercise",
+        newText("context", row.CONTEXT)
+            .cssContainer({"margin-top":"2em", "margin-bottom":"2em", "font-size":"1.55em"})
+            .center()
+            .print()
+            ,
            newPrimer(),
            // Dashed sentence. Segmentation is marked by "*"
            newController("SelfPacedReadingParadigmSentence", {s : row.SENTENCE, splitRegex: /\*/})
