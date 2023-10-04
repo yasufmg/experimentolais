@@ -11,7 +11,7 @@ const askQuestion = (successCallback, failureCallback, waitTime) => (row) => (ro
 
   newCanvas("Canvas", 600, 100)
     .center()
-    .add(   0 ,  0,  newText("Wer oder was wurde im Satz erwähnt?"))
+    .add(   0 ,  0,  newText("Qual alternativa define melhor o que você entendeu?"))
     .add(   0 , 50 , newText("1 =") )
     .add( 300 , 50 , newText("2 =") )
     .add(  40 , 50 , getText("answer_correct") )
@@ -270,10 +270,10 @@ Template("exercise.csv", row =>
 
 // Start experiment
 newTrial( "start_experiment" ,
-    newText("<h2>Jetzt beginnt der Hauptteil der Studie.</h2><p>Sie kriegen Feedback nur bei falscher Antwort.</p>")
+    newText("<h2>Vamos começar o experimento.</p>")
         .print()
     ,
-    newButton("go_to_experiment", "Experiment starten")
+    newButton("go_to_experiment", "Iniciar experimento")
         .print()
         .wait()
 );
@@ -281,6 +281,11 @@ newTrial( "start_experiment" ,
 // Experimental trial
 Template("experiment.csv", row =>
     newTrial( "experiment-"+row.TYPE,
+            newText("context", row.CONTEXT)
+            .cssContainer({"margin-top":"2em", "margin-bottom":"2em", "font-size":"1.55em"})
+            .center()
+            .print()
+            ,
               newPrimer(),
            // Dashed sentence. Segmentation is marked by "*"
            newController("SelfPacedReadingParadigmSentence", {s : row.SENTENCE, splitRegex: /\*/})
@@ -290,14 +295,13 @@ Template("experiment.csv", row =>
            .wait()
            .remove(),
            askTrialQuestion(row))
-    .log( "list"      , row.LIST)
     .log( "item"      , row.ITEM)
     .log( "condition" , row.CONDITION)
 );
 
 // Final screen: explanation of the goal
 newTrial("end",
-    newText("<div class='fancy'><h2>Vielen Dank für die Teilnahme an unserer Studie!</h2></div><p>Um Ihre Vergütung zu bekommen, schicken Sie bitte diesen persönlichen Code an die Versuchsleiterin: <div class='fancy'><em>".concat(voucher, "</em></div></p>"))
+    newText("<div class='fancy'><h2>Muito obrigada por sua participação.<div class='fancy'><em>".concat(voucher, "</em></div></p>"))
         .cssContainer({"margin-top":"1em", "margin-bottom":"1em"})
         .print()
     ,
