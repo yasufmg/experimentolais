@@ -11,7 +11,7 @@ const askQuestion = (successCallback, failureCallback, waitTime) => (row) => (ro
 
   newCanvas("Canvas", 600, 100)
     .center()
-    .add(   0 ,  0,  newText("Wer oder was wurde im Satz erwähnt?"))
+    .add(   0 ,  0,  newText("Qual alternativa melhor define o que você entendeu?"))
     .add(   0 , 50 , newText("1 =") )
     .add( 300 , 50 , newText("2 =") )
     .add(  40 , 50 , getText("answer_correct") )
