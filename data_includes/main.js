@@ -79,23 +79,20 @@ const newPrimer = () => [
 Header(
     // Declare global variables to store the participant's ID and demographic information
     newVar("ID").global(),
-    newVar("GERMAN").global(),
-    newVar("LAND").global(),
-    newVar("NATIVE").global(),
-    newVar("AGE").global(),
-    newVar("GENDER").global(),
-    newVar("HAND").global(),
-    newVar("ACCURACY", []).global()
+    newVar("GENERO").global(),
+    newVar("NATIVO").global(),
+    newVar("IDADE").global(),
+    newVar("ESCOLARIDADE").global(),
+    newVar("CERTIFICADO").global()
 )
- // Add the particimant info to all trials' results lines
-.log( "id"     , getVar("ID") )
-.log( "german" , getVar("GERMAN") )
-.log( "land"   , getVar("LAND") )
-.log( "native" , getVar("NATIVE") )
-.log( "age"    , getVar("AGE") )
-.log( "gender" , getVar("GENDER") )
-.log( "hand"   , getVar("HAND") )
-.log( "code"   , voucher );
+
+ // Add the participant info to all trials' results lines
+.log( "ID"     , getVar("ID") )
+.log( "GENERO" , getVar("GENERO") )
+.log( "NATIVO" , getVar("NATIVO") )
+.log( "IDADE"    , getVar("IDADE") )
+.log( "ESCOLARIDADE" , getVar("ESCOLARIDADE") )
+.log( "CERTIFICADO"   , getVar("CERTIFICADO") )
 
 // Sequence of events: consent to ethics statement required to start the experiment, participant information, instructions, exercise, transition screen, main experiment, result logging, and end screen.
  Sequence("consentimento", "setcounter", "participants", "instructions", randomize("exercise"), "start_experiment", rshuffle("experiment-filler", "experiment-item"), SendResults(), "end")
@@ -253,6 +250,7 @@ Template("exercise.csv", row =>
            askExerciseQuestion(row))
     .log( "item"      , row.ITEM)
     .log( "condition" , row.CONDITION)
+    .log( "sentence" , row.SENTENCE)
 );
 
 // Start experiment
@@ -284,6 +282,7 @@ Template("experiment.csv", row =>
            askTrialQuestion(row))
     .log( "item"      , row.ITEM)
     .log( "condition" , row.CONDITION)
+    .log( "sentence" , row.SENTENCE)
 );
 
 // Final screen
