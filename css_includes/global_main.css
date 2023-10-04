@@ -1,11 +1,11 @@
 body {
-    color:  OldLace;
+    color:  black;
     background-color: white;
     margin-left: 0;
     margin-top: 5em;
 }
 a {
-	color: Black;
+	color: crimson;
 }
 
 .lindent { margin-left: 5em; }
@@ -30,13 +30,13 @@ newButton {
 div.bar-container {
     border: 1px solid;
     border-color: #9ea4b1;
-    background-color: black;
+    background-color: RoyalBlue;
 }
 div.bar {
-    background-color:  Black;
+    background-color:  RoyalBlue;
 }
 div.fancy {
-    color: Black;
+    color: RoyalBlue;
 }
 
 p {
