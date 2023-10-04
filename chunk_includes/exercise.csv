@@ -1,10 +1,3 @@
 ITEM,CONDITION,CONTEXT,SENTENCE,QUESTION,CORRECT,WRONG
-2001,0,CONTEXT,"Essa sentença*é*apenas um exemplo simples.*Você*lerá*sentenças como essas*no experimento.",1,"A sentença é um exemplo","A sentença é desconexa"
-2002,0,CONTEXT,"Beide Einrichtungen*wurden*von Freiwilligen betrieben.",1,,
-2003,0,CONTEXT,"Die Journalisten*warteten*vor der Tür.",1,"Die Journalisten","Die Katzen"
-2004,0,CONTEXT,"Kein Kind*klagte*über Schmerzen.",1,,
-2005,0,CONTEXT,"Der Trainer*lief*davon.",1,"Der Trainer","Der Sprinter"
-2006,0,CONTEXT,"Das Team*wollte*jedes Spiel gewinnen.",1,,
-2007,0,CONTEXT,"Der Bundesrat*schien*sich zu treffen.",1,,
-2008,0,CONTEXT,"Der Radfahrer*kippte*zur Seite.",1,"Der Radfahrer","Das Kind"
-2009,0,CONTEXT,"Der Schwerpunkt*änderte*sich.",1,"Der Schwerpunkt","Die Schwerkraft"
+2001,0,"Essa é um exemplo de um trecho de contexto. Depois, você lerá uma sentença.","Essa sentença*é*apenas um exemplo simples.*Você*lerá*sentenças como essas*no experimento.",1,"A sentença é um exemplo","A sentença é desconexa."
+2002,0,"João gostava de conhecer várias partes do Brasil. Ele era natural de Minas. Porém,","João*estava morando*em Brasília*quando passou*na Universidade Federal da Bahia.",1,"João foi aprovado na universidade.","João saiu da casa dos pais."
