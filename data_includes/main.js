@@ -42,8 +42,8 @@ const askQuestion = (successCallback, failureCallback, waitTime) => (row) => (ro
 ] : []);
 
 const askExerciseQuestion = askQuestion(
-  () => [newText("<b>Richtig!</b>").color("LightGreen").center().print()],
-  () => [newText("<b>Leider falsch!</b>").color("Crimson").center().print()],
+  () => [newText("<b>Correto!</b>").color("LightGreen").center().print()],
+  () => [newText("<b>Incorreto...</b>").color("Crimson").center().print()],
   1000
 );
 
@@ -51,7 +51,7 @@ const askTrialQuestion = askQuestion(
   () => [getVar("ACCURACY").set(v=>[...v,true])],
   () => [
     getVar("ACCURACY").set(v=>[...v,false]),
-    newText("<b>Leider falsch!</b>")
+    newText("<b>Incorreto!</b>")
       .color("Crimson")
       .center()
       .print(),
@@ -286,21 +286,10 @@ Template("experiment.csv", row =>
     .log( "condition" , row.CONDITION)
 );
 
-// Final screen: explanation of the goal
+// Final screen
 newTrial("end",
-    newText("<div class='fancy'><h2>Muito obrigada por sua participação.<div class='fancy'><em>".concat(voucher, "</em></div></p>"))
+    newText("<div class='fancy'><h2>Obrigado pela participação!</h2></div><p>Você pode fechar esta janela agora.")
         .cssContainer({"margin-top":"1em", "margin-bottom":"1em"})
-        .print()
-    ,
-
-    newVar("computedAccuracy").set(getVar("ACCURACY")).set(v=>Math.round(v.filter(a=>a===true).length/v.length*100)),
-    newText("accuracy").text(getVar("computedAccuracy"))
-    ,
-    newText("So viel Prozent der Fragen haben Sie richtig beantwortet: ")
-        .after(getText("accuracy"))
-        .print()
-    ,
-    newHtml("explain", "end.html")
         .print()
     ,
     // Trick: stay on this trial forever (until tab is closed)
