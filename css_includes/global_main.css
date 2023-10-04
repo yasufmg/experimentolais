@@ -5,7 +5,7 @@ body {
     margin-top: 5em;
 }
 a {
-	color: Crimson;
+	color: Black;
 }
 
 .lindent { margin-left: 5em; }
@@ -33,10 +33,10 @@ div.bar-container {
     background-color: black;
 }
 div.bar {
-    background-color:  LightCoral;
+    background-color:  Black;
 }
 div.fancy {
-    color: LightCoral;
+    color: Black;
 }
 
 p {
