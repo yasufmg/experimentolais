@@ -1,3 +1,0 @@
-ITEM,CONDITION,CONTEXT,SENTENCE,QUESTION,CORRECT,WRONG
-2001,0,"Essa é um exemplo de um trecho de contexto. Depois, você lerá uma sentença. ","Essa sentença*é*apenas um exemplo simples.*Você*lerá*sentenças como essas*no experimento.",1,"A sentença é um exemplo","A sentença é desconexa"
-2002,0,"João gostava de conhecer várias partes do Brasil. Ele era natural de Minas. Porém,","João*morou*em Brasília*por dez anos",1,"João não mora mais em Brasília","João mora em Minas"
