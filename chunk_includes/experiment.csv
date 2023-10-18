@@ -14,7 +14,7 @@ ITEM,CONDITION,CONTEXT,SENTENCE,QUESTION,CORRECT,WRONG,TYPE
 114,2,"Paulo participou de uma reunião de projeto no trabalho.","Paulo*deu uma ideia*excelente*no trabalho.",1,"Paulo comunicou uma ideia.","Paulo desistiu de uma ideia.","item"
 117,2,"Artur teve um problema familiar sério. Ele passou a se sentir mal. Então,","Artur*entrou em depressão*com o evento*familiar.",1,"Artur ficou em estado depressivo.","Artur rompeu com a família.","item"
 120,2,"Dayse é muito qualificada e competente. Ela é reconhecida pelo seu trabalho. Por isso,","Dayse*tem alto renome*em seu setor*de trabalho.",1,"Dayse tem prestígio no setor.","Dayse é conhecida no setor.","item"
-123,2,"Lara trabalhou muito em sua pesquisa. Ela se preparou bem para a banca. Portanto,","Lara*estava brilhante*na defesa*de mestrado.",1,"Lara estava se apresentando bem.","Lara estava maquiada na defesa.",item"
+123,2,"Lara trabalhou muito em sua pesquisa. Ela se preparou bem para a banca. Portanto,","Lara*estava brilhante*na defesa*de mestrado.",1,"Lara estava se apresentando bem.","Lara estava maquiada na defesa.","item"
 103,3,"Sara deseja algo novo. Ultimamente, sonha em ser uma influencer de sucesso. Então,","Sara*segue arco-íris*na vida*desde cedo.*",1,"Sara é sonhadora.","Sara é batalhadora.","item"
 106,3,"Davi queria ser promovido. Um dia o chefe o convocou para uma reunião. Então,","Davi*alisou o chefe*na reunião*de equipe.",1,"Davi bajulou o chefe.","Davi acariciou o chefe.","item"
 109,3,"Iágo queria aprender coisas novas. Todos os dias, antes de ir trabalhar, estudava. Então,","Iágo*afinou a mente*em casa*pelas manhãs.",1,"Iágo adquiriu conhecimento.","Iágo aprendeu um instrumento.","item"
