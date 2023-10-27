@@ -72,7 +72,14 @@ const newPrimer = () => [
     .css("margin-top", "8px")
     .center()
     .print(),
-  newKey(" ").wait(),
+newCanvas("screen", "100vw", "100vh")
+    .print("center at 50vw", "center at 50vh")
+,
+newSelector("continue")
+    .settings.add(getCanvas("screen"))
+    .wait()
+,
+getCanvas("screen").remove(),
   getText('primer').remove(),
 ];
 
@@ -243,6 +250,16 @@ Template("exercise.csv", row =>
             .center()
             .print()
             ,
+                       
+            newButton("go_to_exercise", "Próximo")
+        .cssContainer({"margin":"1em"})
+        .center()
+        .print()
+        .wait()
+           ,
+        clear()
+           ,
+           
            newPrimer(),
            // Dashed sentence. Segmentation is marked by "*"
            newController("SelfPacedReadingParadigmSentence", {s : row.SENTENCE, splitRegex: /\*/})
