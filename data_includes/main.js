@@ -271,16 +271,6 @@ Template("exercise.csv", row =>
            askExerciseQuestion(row))
 );
 
-// Start experiment
-newTrial( "start_experiment" ,
-    newText("<h2>Vamos começar o experimento.</p>")
-        .print()
-    ,
-    newButton("go_to_experiment", "Iniciar experimento")
-        .print()
-        .wait()
-);
-
 // Experimental trial
 Template("experiment.csv", row =>
     newTrial( "experiment-"+row.TYPE,
