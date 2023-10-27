@@ -279,6 +279,14 @@ Template("experiment.csv", row =>
             .center()
             .print()
             ,
+        newButton("go_to_exercise", "Próximo")
+        .cssContainer({"margin":"1em"})
+        .center()
+        .print()
+        .wait()
+           ,
+        clear()
+           ,
            newPrimer(),
            // Dashed sentence. Segmentation is marked by "*"
            newController("SelfPacedReadingParadigmSentence", {s : row.SENTENCE, splitRegex: /\*/})
