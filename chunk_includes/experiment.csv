@@ -1,4 +1,4 @@
-TEM,CONDITION,CONTEXT,SENTENCE,QUESTION,CORRECT,WRONG,TYPE
+ITEM,CONDITION,CONTEXT,SENTENCE,QUESTION,CORRECT,WRONG,TYPE
 101,1,"Lucas e Pedro eram muito amigos. Um dia, eles estavam conversando e Pedro foi muito mal educado. Depois disso,","Lucas*amarrou um bode*do colega*de trabalho.",1,"Lucas ficou zangado com o colega.","Lucas trabalhou com o colega.",item
 104,1,"Dom tinha interesse em Paula. Um dia, eles se encontraram. Mas,","Paula*não deu a mínima*para o Dom*no evento.",1,"Paula não deu atenção a Dom.","Paula não entregou algo a Dom.",item
 107,1,"Juca estava terminando a faculdade. Ele faria a prova da OAB no dia seguinte. Então,","Juca*não pregou o olho*na véspera*do exame.",1,"Juca estava sem dormir.","Juca estava muito atento.",item
