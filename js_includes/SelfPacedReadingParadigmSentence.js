@@ -91,6 +91,11 @@ const onKeyDown = (state) => (event) => {
   return false;
 }
 
+const onClick = (state) => (event) => {
+  advanceToken(new Date().getTime(), state)
+  return true;
+}
+
 define_ibex_controller({
   name: "SelfPacedReadingParadigmSentence",
 
@@ -143,6 +148,11 @@ define_ibex_controller({
           $(document).unbind('keydown');
           safeBind($(document), 'keydown', onKeyDown(this));
         }
+      });
+
+      this.safeBind($(document), 'click', (event) => {
+        $(document).unbind('click');
+        safeBind($(document), 'click', onClick(this));
       });
 
         // For iPhone/iPod touch -- add button for going to next word.
