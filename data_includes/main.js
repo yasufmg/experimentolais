@@ -1,6 +1,5 @@
 PennController.ResetPrefix(null); // Shorten command names (keep this line here))
-
-// DebugOff()   // Uncomment this line only when you are 100% done designing your experiment
+DebugOff()   // Uncomment this line only when you are 100% done designing your experiment
 
 const voucher = b64_md5((Date.now() + Math.random()).toString()); // Voucher code generator
 
@@ -26,14 +25,7 @@ const askQuestion = (successCallback, failureCallback, waitTime) => (row) => (ro
     .log()
     .print()
     .once()
-    .wait()
-    .test.selected( "answer_correct" )
-    .success.apply(null, successCallback().concat(
-        [getText("answer_correct").css("border-bottom", "5px solid Green")]
-    ))
-    .failure.apply(null, failureCallback().concat(
-        [getText("answer_wrong").css("border-bottom", "5px solid Crimson")]
-    )),
+    .wait(),
 
   // Wait for feedback and to display which option was selected
   newTimer("wait", waitTime)
@@ -42,8 +34,8 @@ const askQuestion = (successCallback, failureCallback, waitTime) => (row) => (ro
 ] : []);
 
 const askExerciseQuestion = askQuestion(
-  () => [newText("<b>Correto!</b>").color("Green").center().print()],
-  () => [newText("<b>Incorreto...</b>").color("Crimson").center().print()],
+  () => [newText("<b>...</b>").center().print()],
+  () => [newText("<b>...</b>").center().print()],
   1000
 );
 
@@ -300,6 +292,8 @@ Template("experiment.csv", row =>
     .log( "item"      , row.ITEM)
     .log( "condition" , row.CONDITION)
     .log( "sentence" , row.SENTENCE)
+    .log( "question" , row.QUESTION)
+
 );
 
 // Final screen
