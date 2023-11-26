@@ -206,6 +206,32 @@ jqueryWidget: {
                 }
             });
 
+            // Código para fazer clique do mouse avançar palavras
+            this.safeBind($(document), 'click', function(e) {
+                var time = new Date().getTime();
+
+                // *** goToNext() ***
+//                    t.recordSprResult(time, t.currentWord);
+                var word = t.currentWord;
+                if (word > 0 && word <= t.stoppingPoint) {
+                    var rs = t.sprResults[word-1];
+                    rs[0] = time;
+                    rs[1] = t.previousTime;
+                }
+                t.previousTime = time;
+
+                if (t.currentWord - 1 >= 0)
+                    t.blankWord(t.currentWord - 1);
+                if (t.currentWord < t.stoppingPoint)
+                    t.showWord(t.currentWord);
+                ++(t.currentWord);
+                if (t.currentWord > t.stoppingPoint) {
+                    t.processSprResults();
+                    t.finishedCallback(t.resultsLines);
+                }
+                return false;
+            });
+
             // For iPhone/iPod touch -- add button for going to next word.
             if (isIPhone) {
                 var btext = dget(this.options, "iPhoneNextButtonText", "next");
